@@ -1,6 +1,6 @@
 # O-AHTS - Basit Afet Hasar Tespit Projesi
 
-Bu proje, xView2/xBD afet hasar verileriyle hazirlanan modeli kullanip test etmek icin yapilan basit bir ogrenci projesidir.
+Bu proje, xView2/xBD afet hasar verileriyle hazirlanan modeli kullanip test etmek icin yapilan basit bir projedir.
 
 > Durum: Proje gelistirme asamasindadir. Resmi afet yonetimi, AFAD bildirimi veya saha karari icin kullanilmaz.
 
