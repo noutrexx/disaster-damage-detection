@@ -1,0 +1,9 @@
+dataset_yaml: datasets/xview2-xbd/data.yaml
+model: yolov8n.pt
+epochs: 30
+imgsz: 640
+classes:
+  - destroyed
+  - major-damage
+  - minor-damage
+  - no-damage

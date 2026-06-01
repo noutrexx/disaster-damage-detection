@@ -1,0 +1,26 @@
+[
+  {
+    "class": "destroyed",
+    "confidence": 0.88,
+    "x": 320,
+    "y": 180,
+    "width": 90,
+    "height": 70
+  },
+  {
+    "class": "major-damage",
+    "confidence": 0.76,
+    "x": 470,
+    "y": 260,
+    "width": 80,
+    "height": 90
+  },
+  {
+    "class": "minor-damage",
+    "confidence": 0.69,
+    "x": 210,
+    "y": 310,
+    "width": 75,
+    "height": 65
+  }
+]
