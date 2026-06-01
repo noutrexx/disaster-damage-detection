@@ -28,6 +28,12 @@ Bu repoda hedeflenen akış:
 2. Egitilen modeli test gorselleriyle denemek.
 3. Model sonucunu basit bir Streamlit arayuzunde gostermek.
 
+## SRS Dokumani
+
+Projenin genel fikri ve daha buyuk kapsamli hedefleri icin SRS dokumani:
+
+[O-AHTS SRS Dokumani](docs/O-AHTS-SRS.pdf)
+
 ## Su An Ne Var?
 
 - Streamlit tabanli basit frontend.
