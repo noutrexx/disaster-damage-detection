@@ -246,13 +246,13 @@ st.markdown(
 )
 
 st.title("O-AHTS Afet Hasar Tespit Sistemi")
-st.caption("xView2/xBD verileri ile model egitimi, test ve basit tahmin arayuzu.")
+st.caption("xView2/xBD hasar modeli ile basit tahmin ve test arayuzu.")
 st.markdown(
     """
     <div class="status-box">
     Bu proje su an <b>gelistirme asamasindadir</b>. Resmi afet yonetimi, AFAD bildirimi
-    veya saha karari icin kullanilmaz. Amac ogrenci projesi olarak veri, model ve arayuz
-    akisini gostermektir.
+    veya saha karari icin kullanilmaz. Model egitimi bir kere yapilip, uygulamada hazir
+    modelin test ve tahmin akisi gosterilir.
     </div>
     """,
     unsafe_allow_html=True,
@@ -294,7 +294,7 @@ with st.sidebar:
             value=os.getenv("ROBOFLOW_WORKFLOW_ID", ""),
         )
 
-tabs = st.tabs(["Tahmin", "Model Egitimi", "Test", "Proje Notlari"])
+tabs = st.tabs(["Tahmin", "Test", "Proje Notlari"])
 
 with tabs[0]:
     st.subheader("Tek Gorsel Tahmini")
@@ -334,36 +334,6 @@ with tabs[0]:
         render_prediction_panel(image, predictions, source_label)
 
 with tabs[1]:
-    st.subheader("Model Egitimi Plani")
-    st.write(
-        "Bu bolum model egitim surecini takip etmek icin hazirlandi. Gercek egitim "
-        "Roboflow'dan indirilen YOLO formatli xView2/xBD verisi ile yapilir."
-    )
-
-    col_a, col_b, col_c = st.columns(3)
-    epochs = col_a.number_input("Epoch", min_value=1, max_value=300, value=30, step=5)
-    image_size = col_b.selectbox("Image size", [640, 768, 1024], index=0)
-    base_model = col_c.selectbox("Baslangic modeli", ["yolov8n.pt", "yolov8s.pt", "yolov8m.pt"], index=0)
-    dataset_yaml = st.text_input("Dataset YAML yolu", value="datasets/xview2-xbd/data.yaml")
-
-    train_command = (
-        f"python scripts/train_yolo.py --data {dataset_yaml} --model {base_model} "
-        f"--epochs {epochs} --imgsz {image_size}"
-    )
-    st.code(train_command, language="bash")
-
-    st.markdown(
-        """
-        Egitim adimlari:
-
-        1. Roboflow Universe uzerinden xView2/xBD verisini YOLO formatinda indir.
-        2. Indirilen klasoru `datasets/xview2-xbd/` altina koy.
-        3. Yukaridaki komutu terminalde calistir.
-        4. Egitilen agirlik dosyasini `runs/detect/train/weights/best.pt` olarak kullan.
-        """
-    )
-
-with tabs[2]:
     st.subheader("Test Verileri ile Kontrol")
     st.write("Bu sekme hazir test gorselleri uzerinden modelin tahminlerini hizlica kontrol eder.")
     test_sample = st.selectbox("Test icin gorsel sec", list(SAMPLE_IMAGES), key="test_sample")
@@ -393,16 +363,16 @@ with tabs[2]:
         language="bash",
     )
 
-with tabs[3]:
+with tabs[2]:
     st.subheader("Proje Kapsami")
     st.markdown(
         """
         Bu calisma SRS dokumanindaki buyuk O-AHTS fikrinin basitlestirilmis halidir.
 
-        - Su an sadece model egitimi, test ve tek gorsel tahmini hedefleniyor.
+        - Su an hazir model ile test ve tek gorsel tahmini hedefleniyor.
+        - Model egitimi uygulama icinde degil, ayri script ile bir kere yapilacak.
         - AFAD/Kandilli entegrasyonu yok.
         - Harita, GeoJSON, saha ekibi ve bildirim modulleri sonraki asamaya birakildi.
         - Roboflow hosted model ile hizli test yapilabiliyor.
-        - Yerel egitim icin YOLO tabanli scriptler eklendi.
         """
     )

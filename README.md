@@ -1,6 +1,6 @@
 # O-AHTS - Basit Afet Hasar Tespit Projesi
 
-Bu proje, xView2/xBD afet hasar verileri ile model egitimi, test ve tahmin akisini gostermek icin hazirlanan basit bir ogrenci projesidir.
+Bu proje, xView2/xBD afet hasar verileriyle hazirlanan modeli kullanip test etmek icin yapilan basit bir ogrenci projesidir.
 
 > Durum: Proje gelistirme asamasindadir. Resmi afet yonetimi, AFAD bildirimi veya saha karari icin kullanilmaz.
 
@@ -10,10 +10,6 @@ Bu proje, xView2/xBD afet hasar verileri ile model egitimi, test ve tahmin akisi
 
 ![Tahmin ekrani](docs/images/01-prediction.png)
 
-### Model Egitimi Ekrani
-
-![Model egitimi ekrani](docs/images/02-training.png)
-
 ### Test Ekrani
 
 ![Test ekrani](docs/images/03-test.png)
@@ -22,11 +18,11 @@ Bu proje, xView2/xBD afet hasar verileri ile model egitimi, test ve tahmin akisi
 
 SRS dokumaninda anlatilan Otonom Afet Hasar Tespit Sistemi fikri burada cok daha basit bir seviyeye indirildi.
 
-Bu repoda hedeflenen akış:
+Bu repoda hedeflenen akis:
 
-1. xView2/xBD verileriyle model egitmek.
-2. Egitilen modeli test gorselleriyle denemek.
-3. Model sonucunu basit bir Streamlit arayuzunde gostermek.
+1. xView2/xBD verileriyle model bir kere egitilir.
+2. Egitilen veya Roboflow uzerinde hazir duran model uygulamaya baglanir.
+3. Hazir test gorselleri veya yuklenen gorseller ile model sonucu gosterilir.
 
 ## SRS Dokumani
 
@@ -41,8 +37,8 @@ Projenin genel fikri ve daha buyuk kapsamli hedefleri icin SRS dokumani:
 - Hazir test gorselleri.
 - Tek gorsel uzerinde hasar tahmini.
 - Sinif bazli sayaclar.
-- YOLO egitimi icin basit script.
 - Roboflow model testi icin basit script.
+- Bir kere kullanilacak YOLO egitim scripti.
 
 ## Siniflar
 
@@ -61,12 +57,6 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
-Egitim yapmak istenirse ek paketler:
-
-```bash
-pip install -r requirements-train.txt
-```
-
 ## Calistirma
 
 ```bash
@@ -75,9 +65,9 @@ streamlit run app.py
 
 Uygulama acildiktan sonra:
 
-1. **Tahmin** sekmesinden hazir test gorseli secilebilir.
-2. **Model Egitimi** sekmesinden egitim komutu hazirlanabilir.
-3. **Test** sekmesinden model test edilebilir.
+1. **Tahmin** sekmesinden hazir test gorseli secilebilir veya dosya yuklenebilir.
+2. **Test** sekmesinden hazir test gorselleri ile model kontrol edilebilir.
+3. **Proje Notlari** sekmesinden projenin kapsami gorulebilir.
 
 ## Roboflow Ayari
 
@@ -98,6 +88,8 @@ https://universe.roboflow.com/flow-wnra9/xview2-xbd
 
 ## Model Egitimi
 
+Model egitimi uygulamanin ana ekrani degildir. Bu islem sadece bir kere yapilip elde edilen model daha sonra uygulamada kullanilir.
+
 Roboflow'dan YOLO formatinda veri indirildikten sonra klasor yapisi ornek olarak soyle olabilir:
 
 ```text
@@ -107,6 +99,12 @@ datasets/
     train/
     valid/
     test/
+```
+
+Gerekirse egitim paketleri kurulur:
+
+```bash
+pip install -r requirements-train.txt
 ```
 
 Egitim komutu:
@@ -146,4 +144,4 @@ Bu ozellikler projenin sonraki gelistirme asamalarinda dusunulebilir.
 
 ## Not
 
-Bu repo bilerek sade tutuldu. Amac once veri, egitim, test ve tahmin akisini calisir hale getirmek; daha sonra harita ve operasyonel modulleri eklemektir.
+Bu repo bilerek sade tutuldu. Amac hazir/egitilmis modeli kullanarak test ve tahmin akisini gostermektir.
