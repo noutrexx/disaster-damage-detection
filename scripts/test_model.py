@@ -3,8 +3,6 @@ import json
 import os
 from pathlib import Path
 
-from dotenv import load_dotenv
-
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Roboflow hosted model test scripti")
