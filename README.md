@@ -10,6 +10,10 @@ Bu proje, xView2/xBD afet hasar verileriyle hazirlanan modeli kullanip test etme
 
 ![Tahmin ekrani](docs/images/01-prediction.png)
 
+### Analiz Paneli
+
+![Analiz paneli](docs/images/02-analysis.png)
+
 ### Test Ekrani
 
 ![Test ekrani](docs/images/03-test.png)
@@ -32,11 +36,14 @@ Projenin genel fikri ve daha buyuk kapsamli hedefleri icin SRS dokumani:
 
 ## Su An Ne Var?
 
-- Streamlit tabanli basit frontend.
-- Roboflow hosted model baglantisi.
+- Streamlit tabanli modern (dark tema) frontend.
+- Roboflow hosted model / workflow baglantisi.
 - Hazir test gorselleri.
 - Tek gorsel uzerinde hasar tahmini.
-- Sinif bazli sayaclar.
+- Sinif bazli renkli metrik kartlari ve orantili dagilim barlari.
+- 0-100 arasi hasar siddet endeksi (Kritik / Yuksek / Dusuk).
+- Guven esigi ve sinif filtreleri.
+- Sonuclari PNG / CSV / JSON olarak disa aktarma.
 - Roboflow model testi icin basit script.
 - Bir kere kullanilacak YOLO egitim scripti.
 
