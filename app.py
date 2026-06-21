@@ -20,7 +20,6 @@ from core import (
     severity_label,
 )
 
-
 load_dotenv()
 
 APP_DIR = Path(__file__).parent
