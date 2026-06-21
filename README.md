@@ -1,24 +1,42 @@
-# O-AHTS - Basit Afet Hasar Tespit Projesi
+<div align="center">
 
-[![tests](https://github.com/noutrexx/disaster-damage-detection/actions/workflows/tests.yml/badge.svg)](https://github.com/noutrexx/disaster-damage-detection/actions/workflows/tests.yml)
+# 🛰️ O-AHTS · Afet Hasar Tespit Sistemi
 
-Bu proje, xView2/xBD afet hasar verileriyle hazirlanan modeli kullanip test etmek icin yapilan basit bir projedir. Yapım asamasindadir.
+**xView2/xBD uydu görüntüleri üzerinde hasar tespiti, şiddet endeksi ve test arayüzü — uçtan uca.**
 
-> Durum: Proje gelistirme asamasindadir. Resmi afet yonetimi, AFAD bildirimi veya saha karari icin kullanilmaz.
+<br/>
 
-## Ekran Goruntuleri
+[![tests](https://img.shields.io/github/actions/workflow/status/noutrexx/disaster-damage-detection/tests.yml?style=for-the-badge&label=tests&logo=githubactions&logoColor=white)](https://github.com/noutrexx/disaster-damage-detection/actions/workflows/tests.yml)
+![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
+![Roboflow](https://img.shields.io/badge/Roboflow-6706CE?style=for-the-badge&logo=roboflow&logoColor=white)
+![xView2 / xBD](https://img.shields.io/badge/Dataset-xView2%20%2F%20xBD-22c55e?style=for-the-badge)
+![License](https://img.shields.io/badge/License-MIT-fcbf49?style=for-the-badge)
 
-### Tahmin Ekrani
+<br/>
 
-![Tahmin ekrani](docs/images/01-prediction.png)
+<img src="docs/images/01-prediction.png" alt="O-AHTS tahmin ekrani" width="880" />
 
-### Analiz Paneli
+</div>
 
-![Analiz paneli](docs/images/02-analysis.png)
+> ⚠️ **Durum:** Proje geliştirme aşamasındadır. Resmi afet yönetimi, AFAD bildirimi veya saha kararı için kullanılmaz. xView2/xBD verileriyle hazırlanan modeli test etmek için yapılmış basit bir projedir.
 
-### Test Ekrani
+---
 
-![Test ekrani](docs/images/03-test.png)
+## 📸 Ekran Görüntüleri
+
+<table>
+<tr>
+<td align="center" width="50%">
+  <img src="docs/images/02-analysis.png" alt="Analiz paneli" width="100%" /><br/>
+  <sub><b>Analiz paneli</b> — şiddet endeksi, metrik kartları, dağılım barları</sub>
+</td>
+<td align="center" width="50%">
+  <img src="docs/images/03-test.png" alt="Test ekrani" width="100%" /><br/>
+  <sub><b>Test ekranı</b> — hazır görsellerle model kontrolü</sub>
+</td>
+</tr>
+</table>
 
 ## Projenin Amaci
 
