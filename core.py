@@ -6,6 +6,7 @@ dogrudan ve hizlica test edilebilir.
 
 import csv
 import io
+import random
 
 DAMAGE_COLORS = {
     "destroyed": "#d90429",
@@ -28,6 +29,33 @@ DAMAGE_LABELS_TR = {
     "minor-damage": "Hafif hasar",
     "no-damage": "Hasarsiz",
 }
+
+
+def create_demo_predictions(width: int, height: int) -> list[dict]:
+    """API key olmadan arayuzu gostermek icin sahte ama sabit tahmin uretir."""
+    random.seed(width * 1000 + height)
+    classes = list(DAMAGE_COLORS)
+    predictions = []
+
+    for index in range(8):
+        box_w = random.randint(max(35, width // 14), max(45, width // 7))
+        box_h = random.randint(max(35, height // 14), max(45, height // 7))
+        x = random.randint(box_w // 2, max(box_w // 2, width - box_w // 2))
+        y = random.randint(box_h // 2, max(box_h // 2, height - box_h // 2))
+        class_name = classes[index % len(classes)]
+
+        predictions.append(
+            {
+                "class": class_name,
+                "confidence": round(random.uniform(0.55, 0.93), 2),
+                "x": x,
+                "y": y,
+                "width": box_w,
+                "height": box_h,
+            }
+        )
+
+    return predictions
 
 
 def extract_predictions(result) -> list[dict]:

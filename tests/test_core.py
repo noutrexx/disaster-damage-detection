@@ -8,6 +8,7 @@ import pytest
 from core import (
     average_confidence,
     count_by_class,
+    create_demo_predictions,
     extract_predictions,
     predictions_to_csv,
     severity_index,
@@ -17,6 +18,28 @@ from core import (
 
 def make(class_name, confidence=0.9):
     return {"class": class_name, "confidence": confidence, "x": 1, "y": 2, "width": 3, "height": 4}
+
+
+def test_create_demo_predictions_is_deterministic():
+    first = create_demo_predictions(640, 480)
+    second = create_demo_predictions(640, 480)
+    assert first == second
+
+
+def test_create_demo_predictions_count_and_classes():
+    preds = create_demo_predictions(640, 480)
+    assert len(preds) == 8
+    valid = set(count_by_class([]).keys())
+    assert all(p["class"] in valid for p in preds)
+
+
+def test_create_demo_predictions_boxes_in_bounds():
+    w, h = 500, 400
+    for p in create_demo_predictions(w, h):
+        assert 0 <= p["x"] <= w
+        assert 0 <= p["y"] <= h
+        assert p["width"] > 0 and p["height"] > 0
+        assert 0.0 <= p["confidence"] <= 1.0
 
 
 def test_extract_predictions_direct_dict():
