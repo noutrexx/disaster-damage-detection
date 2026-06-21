@@ -30,6 +30,26 @@ DAMAGE_LABELS_TR = {
 }
 
 
+def extract_predictions(result) -> list[dict]:
+    """Roboflow yanitindaki ic ice yapidan tahmin listesini cikarir."""
+    if isinstance(result, dict) and "predictions" in result:
+        return result["predictions"]
+
+    if isinstance(result, list):
+        for item in result:
+            predictions = extract_predictions(item)
+            if predictions:
+                return predictions
+
+    if isinstance(result, dict):
+        for value in result.values():
+            predictions = extract_predictions(value)
+            if predictions:
+                return predictions
+
+    return []
+
+
 def count_by_class(predictions: list[dict]) -> dict[str, int]:
     counts = {name: 0 for name in DAMAGE_COLORS}
     for prediction in predictions:

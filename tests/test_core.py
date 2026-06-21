@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from core import (
     average_confidence,
     count_by_class,
+    extract_predictions,
     predictions_to_csv,
     severity_index,
     severity_label,
@@ -20,6 +21,27 @@ from core import (
 
 def make(class_name, confidence=0.9):
     return {"class": class_name, "confidence": confidence, "x": 1, "y": 2, "width": 3, "height": 4}
+
+
+def test_extract_predictions_direct_dict():
+    result = {"predictions": [make("destroyed")]}
+    assert extract_predictions(result) == [make("destroyed")]
+
+
+def test_extract_predictions_nested_in_list():
+    result = [{"foo": 1}, {"predictions": [make("no-damage")]}]
+    assert extract_predictions(result) == [make("no-damage")]
+
+
+def test_extract_predictions_deeply_nested():
+    result = {"outputs": {"model": {"predictions": [make("minor-damage")]}}}
+    assert extract_predictions(result) == [make("minor-damage")]
+
+
+def test_extract_predictions_missing_returns_empty():
+    assert extract_predictions({"foo": "bar"}) == []
+    assert extract_predictions([]) == []
+    assert extract_predictions("beklenmeyen") == []
 
 
 def test_count_by_class_counts_known_classes():

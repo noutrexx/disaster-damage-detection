@@ -14,6 +14,7 @@ from core import (
     DAMAGE_LABELS_TR,
     average_confidence,
     count_by_class,
+    extract_predictions,
     predictions_to_csv,
     severity_index,
     severity_label,
@@ -67,25 +68,6 @@ def create_demo_predictions(width: int, height: int) -> list[dict]:
         )
 
     return predictions
-
-
-def extract_predictions(result) -> list[dict]:
-    if isinstance(result, dict) and "predictions" in result:
-        return result["predictions"]
-
-    if isinstance(result, list):
-        for item in result:
-            predictions = extract_predictions(item)
-            if predictions:
-                return predictions
-
-    if isinstance(result, dict):
-        for value in result.values():
-            predictions = extract_predictions(value)
-            if predictions:
-                return predictions
-
-    return []
 
 
 def run_roboflow_model(image_path: str, api_key: str, model_id: str) -> list[dict]:
